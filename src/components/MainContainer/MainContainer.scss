@@ -1,0 +1,177 @@
+@mixin buttonStyle{
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-wrapper{
+    width: 74.5vw;
+    // border: 1px solid black;
+    margin-left:2px;
+    max-height: calc(100vmin - 80px);
+    // overflow: hidden;
+    .chat-box-header{
+        border-bottom: 1px solid rgb(191, 183, 183);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        margin-bottom: 2px;
+        background-color: white;
+        z-index: 1000;
+        .chat-user-profile{
+            img{
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 10px 6px black;
+            }
+        }
+
+        .chat-user-name{
+            padding: 10px;
+            width: fit-content;
+            span{   
+                font-family: 'Montserrat', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 2px 8px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .add-user-btn{
+            background: transparent;
+            border: none;
+            padding: 0px;
+            margin: 0px;
+            img{
+                height: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .chatbox-content{
+        // width: 73;
+        font-family: 'Montserrat', sans-serif;
+        height: calc(91vmin - 80px);
+        overflow-y: scroll;
+        padding: 2px 15px;
+        display: flex;
+        flex-direction: column;
+
+        .sender-chat{
+            margin: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 16px;
+            
+            .chat{
+                background-color: rgb(36, 36, 36);
+                color: white;
+                max-width: 500px;
+                padding: 5px 10px;
+                margin: 2px 1px 10px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px 5px #4c3434;
+            }
+            .time-photo{
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                span{
+                    text-align: right !important;
+                    margin-left: 15px ;
+                }
+                img{
+                    margin: 0px 5px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .receiver-chat{
+            margin: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 16px;
+            
+            .chat{
+                background-color: rgb(36, 36, 36);
+                color: white;
+                max-width: 500px;
+                padding: 5px 10px;
+                margin: 2px 1px 10px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px 5px #4c3434;
+            }
+            .time-photo{
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+
+                span{
+                    text-align: right !important;
+                    margin-right: 15px ;
+                }
+                img{
+                    margin: 0px 5px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+
+    .send-input-container{
+        height: 59px;
+        position: sticky;
+        bottom: 0%;
+        z-index: 1000;
+        background-color: white;
+        border-top: 1px solid rgb(191, 183, 183);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 15px;
+        width: 98%;
+        .get-image-icon{
+            @include buttonStyle();
+            background: transparent !important;
+            width: fit-content;
+            padding: 0px !important;
+            border: none;
+            img{
+                height: 35px;
+                margin: 0px;
+            }
+            input{
+                display: none;
+            }
+        }
+        .send-message-inputBox{
+            display: flex;
+            width: 83%;
+            input{
+                width: 100%;
+                max-width: 100%;
+                padding:5px 10px;
+                font-size: 1.2rem;
+                font-family: 'Montserrat', sans-serif;
+                // border: none;
+            }
+        }
+
+        .send-btn{
+            @include buttonStyle();
+        }
+    }   
+}
