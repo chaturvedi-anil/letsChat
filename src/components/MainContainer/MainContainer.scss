@@ -57,6 +57,12 @@
         }
     }
 
+    .no-conversation{
+        height: calc(91vmin - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .chatbox-content{
         // width: 73;
         font-family: 'Montserrat', sans-serif;

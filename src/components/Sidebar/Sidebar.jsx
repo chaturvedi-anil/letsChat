@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./Sidebar.scss";
 import ChatUser from "../ChatUser/ChatUser";
 import searchLogo from "../../assets/searchLogo.svg";
 import addLogo from "../../assets/addLogo.svg";
 import { users } from "../../data";
+import {
+  activeUserAction,
+  activeUserSelector,
+} from "../../redux/Reducers/ContactReducer";
+
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const activeUsers = useSelector(activeUserSelector);
   const [showUserList, setShowUserList] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  // const [chatUsers, setChatUsers] = useState([]);
 
   const handleOptionSelect = (e) => {
-    console.log("options : ", e.target.innerHTML);
     setSelectedOption(e.target.innerHTML);
+    dispatch(activeUserAction.add(e.target.innerHTML));
     setShowUserList(false);
   };
+
+  // show user list
   const handleUserList = () => {
     setShowUserList(true);
   };
+
+  useEffect(() => {}, []);
+
   return (
     <div className="sidebar">
       <div className="header">
@@ -36,7 +50,7 @@ const Sidebar = () => {
             {users &&
               users.map((user) => (
                 <li
-                  key={user.username}
+                  key={user}
                   value={user.username}
                   onClick={handleOptionSelect}
                 >
@@ -47,19 +61,8 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="chatname-container">
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
-        <ChatUser />
+        {activeUsers &&
+          activeUsers.map((user) => <ChatUser userDetails={user} />)}
       </div>
     </div>
   );
